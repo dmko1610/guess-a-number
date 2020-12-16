@@ -1,9 +1,7 @@
 import React from "react";
-import SplashScreen from "react-native-splash-screen";
+import { enableScreens } from "react-native-screens";
+import RootNavigator from "./navigation/RootNavigator";
 
-const App = () => {
-  return <>
-  </>;
-};
+enableScreens();
 
-export default App;
+export default App = () => <RootNavigator />;
