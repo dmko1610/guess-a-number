@@ -1,12 +1,19 @@
 import React from "react";
 import { StyleSheet, TextInput } from "react-native";
+import PropTypes from "prop-types";
 
-export default Input = (props) => (
-  <TextInput
-    {...props}
-    style={StyleSheet.flatten([styles.input, props.style])}
-  />
-);
+export default function Input(props) {
+  return (
+    <TextInput
+      {...props}
+      style={StyleSheet.flatten([styles.input, props.style])}
+    />
+  );
+}
+
+Input.propTypes = {
+  style: PropTypes.object,
+};
 
 const styles = StyleSheet.create({
   input: {

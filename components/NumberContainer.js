@@ -1,12 +1,20 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import PropTypes from "prop-types";
+
 import Colors from "../constants/Colors";
 
-export default NumberContainer = (props) => (
-  <View style={styles.container}>
-    <Text style={styles.number}>{props.children}</Text>
-  </View>
-);
+export default function NumberContainer(props) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.number}>{props.children}</Text>
+    </View>
+  );
+}
+
+NumberContainer.propTypes = {
+  children: PropTypes.any,
+};
 
 const styles = StyleSheet.create({
   container: {
