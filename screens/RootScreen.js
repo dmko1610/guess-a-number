@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
+import GameOverScreen from "./GameOverScreen";
 import GameScreen from "./GameScreen";
 import StartGameScreen from "./StartGameScreen";
 
@@ -15,7 +16,8 @@ const RootScreen = () => {
   let content = <StartGameScreen onStartGame={startGameHandler} />;
 
   if (userNumber) {
-    content = <GameScreen userChoice={userNumber} />;
+    // content = <GameScreen userChoice={userNumber} />;
+    content = <GameOverScreen />;
   }
   return <View style={styles.screen}>{content}</View>;
 };
