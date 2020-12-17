@@ -6,7 +6,7 @@ import Colors from "../constants/Colors";
 
 export default function MainButton(props) {
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
       <View style={styles.button}>
         <Text
           style={StyleSheet.flatten([styles.buttonText, DefaultStyles.title])}>
@@ -19,6 +19,7 @@ export default function MainButton(props) {
 
 MainButton.propTypes = {
   children: PropTypes.any,
+  onPress: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

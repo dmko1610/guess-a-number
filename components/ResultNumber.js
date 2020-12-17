@@ -12,13 +12,16 @@ export default function ResultNumber(props) {
     <Card style={styles.summaryContainer}>
       <BodyText>You Selected</BodyText>
       <NumberContainer>{props.children}</NumberContainer>
-      <MainButton>START GAME</MainButton>
+      <MainButton onPress={() => props.onStartGame(props.children)}>
+        START GAME
+      </MainButton>
     </Card>
   );
 }
 
 ResultNumber.propTypes = {
   children: PropTypes.any,
+  onStartGame: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

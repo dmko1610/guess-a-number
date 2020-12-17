@@ -6,12 +6,13 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import PropTypes from "prop-types";
 
 import TitleText from "./../components/TitleText";
 import ResultNumber from "./../components/ResultNumber";
 import SelectNumberContainer from "./../components/SelectNumberContainer";
 
-const StartGameScreen = () => {
+const StartGameScreen = (props) => {
   const [enteredValue, setEnteredValue] = useState("");
   const [confirmed, setConfirmed] = useState(false);
   const [selectedNumber, setSelectedNumber] = useState();
@@ -44,7 +45,11 @@ const StartGameScreen = () => {
   let confirmedOutput;
 
   if (confirmed) {
-    confirmedOutput = <ResultNumber>{selectedNumber}</ResultNumber>;
+    confirmedOutput = (
+      <ResultNumber onStartGame={props.onStartGame}>
+        {selectedNumber}
+      </ResultNumber>
+    );
   }
 
   return (
@@ -61,6 +66,10 @@ const StartGameScreen = () => {
       </View>
     </TouchableWithoutFeedback>
   );
+};
+
+StartGameScreen.propTypes = {
+  onStartGame: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
