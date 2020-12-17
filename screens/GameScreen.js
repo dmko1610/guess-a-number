@@ -1,13 +1,20 @@
 import React from "react";
-import { View, StyleSheet, Text, StatusBar } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
+import Card from "../components/Card";
+import MainButton from "../components/MainButton";
+import NumberContainer from "../components/NumberContainer";
 
 import DefaultStyles from "../constants/DefaultStyles";
 
 const GameScreen = () => {
   return (
     <View style={styles.screen}>
-      <StatusBar barStyle="light-content" backgroundColor="#fff" />
       <Text style={DefaultStyles.title}>Opponent's Guess</Text>
+      <NumberContainer>CurrentGuess</NumberContainer>
+      <Card>
+        <MainButton></MainButton>
+        <MainButton></MainButton>
+      </Card>
     </View>
   );
 };
