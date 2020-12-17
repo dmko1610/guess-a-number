@@ -50,7 +50,7 @@ const SelectNumberContainer = (props) => {
 };
 
 SelectNumberContainer.propTypes = {
-  enteredValue: PropTypes.number,
+  enteredValue: PropTypes.string,
   onChangeText: PropTypes.func,
   confirmInput: PropTypes.func,
   resetInput: PropTypes.func,

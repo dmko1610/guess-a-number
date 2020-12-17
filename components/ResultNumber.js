@@ -5,12 +5,14 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 import BodyText from "./BodyText";
 import NumberContainer from "./NumberContainer";
+import MainButton from "./MainButton";
 
 export default function ResultNumber(props) {
   return (
     <Card style={styles.summaryContainer}>
       <BodyText>You Selected</BodyText>
       <NumberContainer>{props.children}</NumberContainer>
+      <MainButton>START GAME</MainButton>
     </Card>
   );
 }
