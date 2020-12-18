@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 import MainButton from "../components/MainButton";
 import TitleText from "../components/TitleText";
@@ -25,9 +26,15 @@ const GameOverScreen = (props) => {
           <Text style={styles.highlight}>{props.userNumber}</Text>.
         </BodyText>
       </View>
-      <MainButton>NEW GAME</MainButton>
+      <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
     </View>
   );
+};
+
+GameOverScreen.propTypes = {
+  roundsNumber: PropTypes.number,
+  userNumber: PropTypes.number,
+  onRestart: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

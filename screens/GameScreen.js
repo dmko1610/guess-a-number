@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { View, StyleSheet, Text, FlatList, Alert } from "react-native";
 import { Icon } from "react-native-elements";
 import PropTypes from "prop-types";
@@ -46,6 +46,12 @@ const GameScreen = (props) => {
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
   const currentLow = useRef(1);
   const currentHigh = useRef(100);
+
+  useEffect(() => {
+    if (currentGuess === props.userChoice) {
+      props.onGameOver(pastGuesses.length);
+    }
+  }, [currentGuess, props.userChoice, props.onGameOver]);
 
   const nextGuessHandler = (direction) => {
     if (
@@ -101,6 +107,7 @@ const GameScreen = (props) => {
 
 GameScreen.propTypes = {
   userChoice: PropTypes.number,
+  onGameOver: PropTypes.func,
 };
 
 const styles = StyleSheet.create({

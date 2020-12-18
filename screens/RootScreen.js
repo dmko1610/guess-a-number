@@ -5,19 +5,32 @@ import GameScreen from "./GameScreen";
 import StartGameScreen from "./StartGameScreen";
 
 const RootScreen = () => {
-  const [userNumber, setUserNumber] = useState(20);
+  const [userNumber, setUserNumber] = useState();
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const startGameHandler = (selectedNumber) => setUserNumber(selectedNumber);
 
-  /* const configureNewGameHandler = () => {
+  const gameOverHandler = (numOfRounds) => setGuessRounds(numOfRounds);
+
+  const configureNewGameHandler = () => {
     setUserNumber(null);
-  }; */
+    setGuessRounds(0);
+  };
 
   let content = <StartGameScreen onStartGame={startGameHandler} />;
 
-  if (userNumber) {
-    // content = <GameScreen userChoice={userNumber} />;
-    content = <GameOverScreen />;
+  if (userNumber && guessRounds <= 0) {
+    content = (
+      <GameScreen userChoice={userNumber} onGameOver={gameOverHandler} />
+    );
+  } else if (guessRounds > 0) {
+    content = (
+      <GameOverScreen
+        roundsNumber={guessRounds}
+        userNumber={userNumber}
+        onRestart={configureNewGameHandler}
+      />
+    );
   }
   return <View style={styles.screen}>{content}</View>;
 };
