@@ -20,17 +20,19 @@ const generateRandomBetween = (min, max, exclude) => {
   }
 };
 
-/* 
-const binarySeach = (min, max, exclude) => {
+const binarySeach = (min, max, userChoice) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  const rndNumber = (max - min) / 2;
-  if (rndNumber === exclude) {
-    return binarySeach(min, max, exclude);
-  } else {
-    return rndNumber;
+  const midNumber = Math.floor((max + min) / 2);
+  console.log("min ", min);
+  console.log("mix ", max);
+  console.log("mid ", midNumber);
+  if (midNumber !== userChoice) {
+    // return binarySeach(min, max, userChoice);
+  // } else {
+    return midNumber;
   }
-}; */
+};
 
 const renderListItem = (listLength, itemData) => (
   <View style={styles.listItem}>
@@ -40,12 +42,14 @@ const renderListItem = (listLength, itemData) => (
 );
 
 const GameScreen = (props) => {
-  const initialGuess = generateRandomBetween(1, 100, props.userChoice);
+  // const initialGuess = binarySeach(1, 100, props.userChoice);
+  const initialGuess = binarySeach(1, 1000, props.userChoice);
+  console.log("initialGuess ", initialGuess);
 
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
   const [pastGuesses, setPastGuesses] = useState([initialGuess.toString()]);
   const currentLow = useRef(1);
-  const currentHigh = useRef(100);
+  const currentHigh = useRef(1000);
 
   useEffect(() => {
     if (currentGuess === props.userChoice) {
@@ -68,12 +72,18 @@ const GameScreen = (props) => {
     } else {
       currentLow.current = currentGuess + 1;
     }
-
-    const nextNumber = generateRandomBetween(
+    console.log("currentLow ", currentLow.current);
+    /* const nextNumber = generateRandomBetween(
+      currentLow.current,
+      currentHigh.current,
+      currentGuess,
+    ); */
+    const nextNumber = binarySeach(
       currentLow.current,
       currentHigh.current,
       currentGuess,
     );
+    console.log("nextNumber ", nextNumber);
     setCurrentGuess(nextNumber);
     setPastGuesses((curPastGuesses) => [
       nextNumber.toString(),

@@ -39,7 +39,7 @@ const SelectNumberContainer = (props) => {
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType="number-pad"
-        maxLength={2}
+        maxLength={3}
       />
       <View style={styles.buttonContainer}>
         {renderButton(resetProps)}
